@@ -1,0 +1,27 @@
+﻿using ggpsService;
+
+/// <summary>
+/// Summary description for ServiceInvoker
+/// </summary>
+public static class ServiceInvoker
+{
+    /// <summary>
+    /// Call the gsis web service and returns info about a legal entity 
+    /// </summary>
+    /// <param name="afm">string : a valid vat number for a legal entity</param>
+    /// <returns>RgWsBasStoixNRtUser : record with the entity info</returns>
+	public static RgWsBasStoixNRtUser InvokeggpsService(string afm)
+	{
+		    decimal transid = 0;
+
+            RgWsBasStoixNClient client = new RgWsBasStoixNClient();
+            RgWsBasStoixNRtUser res = new RgWsBasStoixNRtUser();
+            GenWsErrorRtUser reserror = new GenWsErrorRtUser();
+
+            //Invoke service client
+            client.rgWsBasStoixN(afm, ref res, ref transid, ref reserror);
+            
+            return res;
+	}
+    
+}
