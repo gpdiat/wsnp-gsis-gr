@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="assets/css/site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <p>
+   Η παρούσα σελίδα περιέχει παραδείγματα κώδικα που χρησιμοποιεί την υπηρεσία   (Webservice) της Γ.Γ.Π.Σ : «<a 
+            href="http://www.gsis.gr/wsnp.html" target="_blank">Βασικά Στοιχεία Φορολογουμένου (για Νομικό Πρόσωπο)</a>»
+   Τα παραδείγματα που παρατίθενται έχουν υλοποιηθεί σε πλατφόρμα ASP.NET με χρήση C# για την κλήση του webservice και συνδιασμό ASP.NET / HTML / JQUERY για την παρουσίαση.
+   Ο πηγαίος κώδικας είναι διαθέσιμος <a href="http://code.google.com/p/wsnp-gsis-gr/" target="_blank">εδώ</a> και διανέμεται ως λογισμικό ανοικτού κώδικα σύμφωνα με την άδεια <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a>
+    </p>
+    
+    <table>
+    <caption>Παραδείγματα Κλήσης Webservice</caption>
+        <tr>
+            <td>
+                <a href="BashStoixeionN_Simple.aspx">Κλήση με postback (simple)</a>
+            </td>
+            <td>
+                 <p>
+                 H κλήση γίνεται με Postback στον webserver ενώ επιστρέφεται μόνο η επωνυμία και η δραστηριότητα της επιχείρησης.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="BashStoixeionN_FullAsync.aspx">Κλήση με ajax (full)</a>
+           </td>
+            <td>
+                <p>
+                Στο παράδειγμα αυτό η κλήση του webservice γίνεται με χρήση AJAX  , ενώ επιστρέφονται περισσότερες πληροφορίες σχετικά με το νομικό πρόσωπο.
+                </p>
+            </td>
+        </tr>
+
+    </table>
+    <br />
+    <br />
+    <p>
+    Η κλήση προς το Webservice της Γ.Γ.Π.Σ πραγματοποιείται μέσω της παρακάτω μεθόδου
+    </p>
+    
+    <!-- c# code sample  -->
+
+<div class="csharpcode">
+<pre class="alt"><span class="rem">/// &lt;summary&gt;</span></pre>
+<pre>    <span class="rem">/// Call the gsis web service and returns info about a legal entity </span></pre>
+<pre class="alt">    <span class="rem">/// &lt;/summary&gt;</span></pre>
+<pre>    <span class="rem">/// &lt;param name="afm"&gt;string : a valid vat number for a legal entity&lt;/param&gt;</span></pre>
+<pre class="alt">    <span class="rem">/// &lt;returns&gt;RgWsBasStoixNRtUser : record with the entity info&lt;/returns&gt;</span></pre>
+<pre>    <span class="kwrd">public</span> <span class="kwrd">static</span> RgWsBasStoixNRtUser InvokeggpsService(<span class="kwrd">string</span> afm)</pre>
+<pre class="alt">    {</pre>
+<pre>            <span class="kwrd">decimal</span> transid = 0;</pre>
+<pre class="alt">&nbsp;</pre>
+<pre>            RgWsBasStoixNClient client = <span class="kwrd">new</span> RgWsBasStoixNClient();</pre>
+<pre class="alt">            RgWsBasStoixNRtUser res = <span class="kwrd">new</span> RgWsBasStoixNRtUser();</pre>
+<pre>            GenWsErrorRtUser reserror = <span class="kwrd">new</span> GenWsErrorRtUser();</pre>
+<pre class="alt">&nbsp;</pre>
+<pre>            <span class="rem">//Invoke service client</span></pre>
+<pre class="alt">            client.rgWsBasStoixN(afm, <span class="kwrd">ref</span> res, <span class="kwrd">ref</span> transid, <span class="kwrd">ref</span> reserror);</pre>
+<pre>            </pre>
+<pre class="alt">            <span class="kwrd">return</span> res;</pre>
+<pre>    }</pre>
+</div>
+  
+   
+    
+
+</body>
+</html>
