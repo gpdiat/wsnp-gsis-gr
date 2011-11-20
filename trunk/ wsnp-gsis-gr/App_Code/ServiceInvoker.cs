@@ -20,6 +20,16 @@ public static class ServiceInvoker
 
             //Invoke service client
             client.rgWsBasStoixN(afm, ref res, ref transid, ref reserror);
+
+            //TODO : check error status
+            if (reserror != null && !string.IsNullOrEmpty(reserror.errorCode))
+            {
+                //handle error code
+
+                //reserror.errorCode
+                //reserror.errorDescr 
+
+            }
             
             return res;
 	}
