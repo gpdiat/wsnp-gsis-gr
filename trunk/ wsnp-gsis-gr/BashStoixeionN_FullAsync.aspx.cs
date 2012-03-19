@@ -9,7 +9,7 @@ public partial class BashStoixeionN_FullAsync : System.Web.UI.Page
     public static string GetAfmInfo(string afm)
     {
 
-        RgWsBasStoixNRtUser result = ServiceInvoker.InvokeggpsService(afm.Trim());
+        RgWsBasStoixEpitRtUser result = ServiceInvoker.InvokeggpsService2(afm.Trim());
 
         JavaScriptSerializer jss = new JavaScriptSerializer();
         string json = jss.Serialize(result);
