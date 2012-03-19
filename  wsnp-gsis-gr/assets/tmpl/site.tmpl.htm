@@ -8,26 +8,51 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody> 
                 <tr>
                 <th scope="row" class="column1">Ονομασία</th>
                 <td>${onomasia}</td>
                 </tr>
+                 {{if commerTitle}}
                 <tr class="odd">
                 <th scope="row" class="column1">Εμπορικός Τίτλος</th>
                 <td>${commerTitle}</td>
                 </tr>
+                 {{/if}}
                 <tr>
                 <th scope="row" class="column1">Δραστηριότητα</th>
                 <td>${actLongDescr} (${facActivity})</td>
                 </tr>
+                 <tr>
+                <th scope="odd" class="column1">Τύπος</th>
+                <td>${INiFlagDescr} 
+                 {{if legalStatusDescr}}
+                    ${legalStatusDescr}
+                    {{else}}
+                      (${firmFlagDescr})
+                  {{/if}}
+
+                </td>
+                </tr>
+                {{if legalStatusDescr}}
+                    <tr class="odd">
+                    <th scope="row" class="column1">Αριθμός Υποκαταστημάτων</th>
+                    <td>${countOfBranches}</td>
+                    </tr>
+                {{/if}}
+
+                 <tr>
+                <th scope="row" class="column1">Κατάσταση</th>
+                <td>${deactivationFlagDescr}  {{if assTxpActualAfm}} (Αντικατάσταση από ενεργό  ΑΦΜ:${assTxpActualAfm}) {{/if}} </td>
+                </tr>
+                
                 <tr class="odd">
                 <th scope="row" class="column1">Δ.Ο.Υ</th>
                 <td>${doyDescr} (${doy} )</td>
                 </tr>
                 <tr>
                 <th scope="row" class="column1">Διεύθυνση</th>
-                <td>${parDescription} - ${postalAddress} ${postalAddressΝο}  , Τ.Κ ${postalZipCode}</td>
+                <td>${parDescription} - ${postalAddress} ${postalAddressNo}  , Τ.Κ ${postalZipCode}</td>
                 </tr>
                 <tr>
                 <th scope="row" class="column1">Επικοινωνία</th>

@@ -12,7 +12,9 @@ public partial class BashStoixeionN_Simple : System.Web.UI.Page
     /// <param name="e"></param>
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        RgWsBasStoixNRtUser result=ServiceInvoker.InvokeggpsService(txtAfm.Text.Trim());
+        
+        RgWsBasStoixEpitRtUser result = ServiceInvoker.InvokeggpsService2(txtAfm.Text.Trim());
+        lblResultsOnomasia.Text = result.onomasia;
         lblResultsOnomasia.Text  = result.onomasia;
         lblResultsActLongDescr.Text = result.actLongDescr;
     }
